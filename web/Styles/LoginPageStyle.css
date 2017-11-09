@@ -1,3 +1,8 @@
+body {
+
+    background-color: #83C5E9;
+
+}
 .wrapper {
     margin-top: 80px;
     margin-bottom: 20px;
@@ -32,7 +37,13 @@ input[type="text"] {
 }
 
 input[type="password"] {
-    margin-bottom: 20px;
+    margin-bottom: 0px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: 100%;
+}
+input[type="email"] {
+    margin-bottom: 0px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     width: 100%;
@@ -130,4 +141,8 @@ input[type="password"] {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
     background: WhiteSmoke;
+}
+
+button {
+    margin-top: 10px;
 }

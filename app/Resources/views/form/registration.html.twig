@@ -1,12 +1,16 @@
-{% extends 'default/index.html.twig' %}
-
+<link rel="stylesheet" href="{{ asset("Styles/LoginPageStyle.css") }}">
 {% block title %}
-    Registration
+
 {% endblock %}
 
 {% block form %}
     {{ form_start(form, {'attr': {'class': 'form-signin'}}) }}
-    <h3>Join Quiz</h3>
+
+<div class = "container">
+    <div class="wrapper">
+        <h3 class="form-signin-heading">Registration</h3>
+        <hr class="colorgraph"><br>
+        <title>Registration</title>
     {{ form_widget(
     form.username,
     {'attr': {
@@ -39,11 +43,8 @@
     }})
     }}
 
-    <div class="checkbox check">
-
-    </div>
-
-    <button type="submit">Create</button>
+        <button class="btn btn-lg btn-primary btn-login" type="submit">Create</button>
+        <button class="btn btn-lg btn-primary btn-login" onclick="location.href='/'" type="button">Sign in</button>
     {{ form_end(form) }}
 
     {% if errors.count > 0 %}
@@ -56,4 +57,6 @@
         </div>
     {% endif %}
 {% endblock %}
+    </div>
+</div>
 

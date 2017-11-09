@@ -17,6 +17,7 @@ use AppBundle\Form\UserType;
 use AppBundle\Service\RegistrationManager;
 use AppBundle\Service\ActivateManager;
 use AppBundle\Service\EmailManager;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class RegistrationController extends Controller
 {
@@ -24,12 +25,13 @@ class RegistrationController extends Controller
      * @Route("/registration", name="registration")
      */
     public function registrationAction(Request $request,
-                                       RegistrationManager $manager,\Swift_Mailer $mailer/**/) {
+                                       RegistrationManager $manager,\Swift_Mailer $mailer) {
 
         //$mailer = new \Swift_Mailer();
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('quiz');
         }
+        $error= "a";
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -44,7 +46,8 @@ class RegistrationController extends Controller
         }
         return $this->render('form/registration.html.twig', [
             'form' => $form->createView(),
-            'errors' => $form->getErrors(true, true)
+            'errors' => $form->getErrors(true, true),
+           // 'error' =>$error
         ]);
     }
     /**

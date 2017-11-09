@@ -11,8 +11,11 @@ namespace AppBundle\DBManager;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use AppBundle\Entity\User;
 use AppBundle\Entity\UserToken;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class UserDBManager
+
+
+class UserDBManager extends Controller
 {
     private $db;
     const BYTE_COUNT = 32;
@@ -33,7 +36,7 @@ class UserDBManager
         $this->db->flush();
     }
 
-    public function getUser(string $email)
+    public function getUsers(string $email)
     {
         return $this->db
             ->getRepository('AppBundle\Entity\User')
@@ -42,7 +45,7 @@ class UserDBManager
 
     public function isUserExist(string $email): bool
     {
-        return null !== $this->getUser($email);
+        return null !== $this->getUsers($email);
     }
 
     public function getUserByToken(string $token):? User
@@ -114,5 +117,12 @@ class UserDBManager
     private function getTime(): \DateTime
     {
         return new \DateTime();
+    }
+
+    public function getAllUsers()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository('User::class')->findAll();
+        return $users;
     }
 }
