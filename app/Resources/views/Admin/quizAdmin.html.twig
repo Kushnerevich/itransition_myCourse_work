@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3.jquery.min.js"></script>
+    <script>
+        $(document).ready (function () {
+            $("#mainPage").bind("click",function () {
+                $.ajax ({
+
+                })
+            })
+        })
+    </script>
+    <link rel="stylesheet" href="{{ asset("Styles/AdminPageStyle.css") }}">
+</head>
+<body>
+<ul id="menu">
+    <li id ="mainPage"><a href="{{ path('admin') }}">Main Page</a></li>
+    <li id = "userPage"><a href="{{ path('admin/useredit') }}">User controller</a></li>
+    <li id ="questionPage"><a href="{{ path('admin/questionedit') }}">Question controller</a></li>
+    <li id ="quizPage"><a href="{{ path('admin/quizedit') }}">Quiz controller</a></li>
+</ul>
+</body>
+</html>
