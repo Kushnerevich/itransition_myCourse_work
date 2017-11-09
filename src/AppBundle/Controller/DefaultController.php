@@ -21,7 +21,6 @@ class DefaultController extends Controller
 
         $error = $authUtils->getLastAuthenticationError();
         $email = $authUtils->getLastUsername();
-        echo '<br>'.$email.'<br>';
 
         return $this->render('form/signIn.html.twig', [
             'email' => $email,
