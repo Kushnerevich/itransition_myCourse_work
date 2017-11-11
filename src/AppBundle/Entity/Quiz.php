@@ -28,12 +28,12 @@ class Quiz implements \Serializable
         return $this->id;
     }
 
-    public function setNameOfQuiz(string $nameOfQuiz)
+    public function setname_of_quiz(string $nameOfQuiz)
     {
         $this->nameOfQuiz=$nameOfQuiz;
     }
 
-    public function getNameOfQuiz()
+    public function getname_of_quiz()
     {
         return $this->nameOfQuiz;
     }

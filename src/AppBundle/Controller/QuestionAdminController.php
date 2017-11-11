@@ -25,7 +25,6 @@ class QuestionAdminController extends Controller
         $em = $this->getDoctrine()->getManager();
         $questions = $em->getRepository(Question::class)->findAll();
         $answers = $em->getRepository(Answer::class)->findAll();
-        //findBy(['Question_id' => $questions->getId);
         return $this->render('Admin/questionAdmin.html.twig',array(
             'questions' => $questions,
             'answers'=>$answers

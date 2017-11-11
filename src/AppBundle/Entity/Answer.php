@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -27,7 +28,8 @@ class Answer
     private $right;
 
     /**
-     * @ORM\OneToOne(targetEntity="Question", inversedBy="Answer")
+     *
+     * @ORM\ManyToOne(targetEntity="Question",inversedBy="QuizQuestions")
      * @ORM\JoinColumn(name="Question_id", referencedColumnName="id")
      */
     private $idQuestion;
@@ -42,7 +44,7 @@ class Answer
         $this->nameOfAnswer=$nameOfAnswer;
     }
 
-    public function getNameOfAnswer()
+    public function getname_of_answer()
     {
         return $this->nameOfAnswer;
     }
@@ -62,7 +64,7 @@ class Answer
         $this->idQuestion=$idQuestion;
     }
 
-    public function getIdQuestion()
+    public function getQuestion_id()
     {
         return $this->idQuestion;
     }

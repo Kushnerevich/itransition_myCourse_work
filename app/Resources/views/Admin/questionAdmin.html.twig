@@ -34,20 +34,8 @@
             <th>4st variant</th>
         </tr>
         </thead>
-        <tbody>
-        {% for question in questions %}
 
-            <tr>
-                <td>{{ question.name_of_question }}</td>
-            {% for answer in answers %}
-                {% if answer.Question_id == question.id %}
-                <td>{{ answer.name_of_answer }}</td>
-                <td>{{ answer.right }}</td>
-                {% endif %}
-                <td><button class="DeleteUser" type="submit">Delete</button></td>
-            </tr>
-            {% endfor %}
-        {% endfor %}
+        <tbody>
         <tr>
             <td><input type="text" name="QuestionName"></td>
             <td><input type="text" name="1stAnswer" ></td>
@@ -56,7 +44,23 @@
             <td><input type="text" name="4stAnswer"></td>
             <td><button type="submit">Add question</button></td>
         </tr>
+        {% for question in questions %}
+
+            <tr>
+                <td>{{ question.name_of_question }}</td>
+                {% for answer in answers %}
+
+                     {% if answer.Question_id.id==question.id %}
+                        <td>{{ answer.name_of_answer }}{{ answer.right }}</td>
+                     {%endif%}
+                {% endfor %}
+                <td><button class="DeleteUser" type="submit">Delete</button></td>
+            </tr>
+
+        {% endfor %}
+
         </tbody>
     </table>
+
 </div>
 </html>

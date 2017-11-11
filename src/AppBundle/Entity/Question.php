@@ -15,16 +15,16 @@ class Question implements \Serializable
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    private $Id;
 
     /**
      * @ORM\Column(type="string", length=25, unique=false)
      */
     private $nameOfQuestion;
 
-    public function getId(): int
+    public function getId()
     {
-        return $this->id;
+        return $this->Id;
     }
 
     public function setNameOfQuestions(string $nameOfQuestion)
@@ -32,7 +32,7 @@ class Question implements \Serializable
         $this->nameOfQuestion=$nameOfQuestion;
     }
 
-    public function getNameOfQuestions()
+    public function getname_of_question()
     {
         return $this->nameOfQuestion;
     }
@@ -41,7 +41,7 @@ class Question implements \Serializable
     public function serialize()
     {
         return serialize(array(
-            $this->id,
+            $this->Id,
             $this->nameOfQuestion,
         ));
     }
@@ -50,7 +50,7 @@ class Question implements \Serializable
     public function unserialize($serialized)
     {
         list (
-            $this->id,
+            $this->Id,
             $this->nameOfQuestion,
             ) = unserialize($serialized);
     }
