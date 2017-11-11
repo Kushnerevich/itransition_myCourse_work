@@ -1,4 +1,5 @@
 <?php
+
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -43,7 +44,7 @@ class Answer
         $this->nameOfAnswer=$nameOfAnswer;
     }
 
-    public function getNameOfAnswer()
+    public function getname_of_answer()
     {
         return $this->nameOfAnswer;
     }
@@ -63,7 +64,7 @@ class Answer
         $this->idQuestion=$idQuestion;
     }
 
-    public function getQuestion_id():integer
+    public function getQuestion_id()
     {
         return $this->idQuestion;
     }
