@@ -12,7 +12,7 @@ use Doctrine\Common\Persistence\ManagerRegistry;
 use AppBundle\Entity\User;
 use AppBundle\Entity\UserToken;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
+use Doctrine\ORM\EntityManager;
 
 
 class UserDBManager extends Controller
@@ -122,7 +122,7 @@ class UserDBManager extends Controller
     public function getAllUsers()
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository('User::class')->findAll();
+        $users = $em->getRepository(User::class)->findAll();
         return $users;
     }
 }

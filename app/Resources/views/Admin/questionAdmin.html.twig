@@ -23,4 +23,40 @@
     <li id ="quizPage"><a href="{{ path('admin/quizedit') }}">Quiz controller</a></li>
 </ul>
 </body>
+<div>
+    <table class="questionTable">
+        <thead>
+        <tr>
+            <th class="RedWord">Question</th>
+            <th>1st variant</th>
+            <th>2st variant</th>
+            <th>3st variant</th>
+            <th>4st variant</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for question in questions %}
+
+            <tr>
+                <td>{{ question.name_of_question }}</td>
+            {% for answer in answers %}
+                {% if answer.Question_id == question.id %}
+                <td>{{ answer.name_of_answer }}</td>
+                <td>{{ answer.right }}</td>
+                {% endif %}
+                <td><button class="DeleteUser" type="submit">Delete</button></td>
+            </tr>
+            {% endfor %}
+        {% endfor %}
+        <tr>
+            <td><input type="text" name="QuestionName"></td>
+            <td><input type="text" name="1stAnswer" ></td>
+            <td><input type="text" name="2stAnswer" ></td>
+            <td><input type="text" name="3stAnswer" ></td>
+            <td><input type="text" name="4stAnswer"></td>
+            <td><button type="submit">Add question</button></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </html>

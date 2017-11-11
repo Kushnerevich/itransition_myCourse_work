@@ -1,3 +1,39 @@
+table {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    text-align: left;
+    border-collapse: separate;
+    border-spacing: 5px;
+    background: #ECE9E0;
+    color: #656665;
+    border: 16px solid #ECE9E0;
+    border-radius: 20px;
+    width: 100%;
+}
+
+button{
+    width: 100%;
+}
+
+#mainPage,#quizPage,#userPage{
+    width: 23%;
+}
+
+.questionTable{
+    width: 100%;
+}
+.RedWord{
+    color: darkmagenta;
+}
+
+th {
+    font-size: 18px;
+    padding: 10px;
+}
+td {
+    background: #F5D7BF;
+    padding: 10px;
+}
+
 body {
 
     background-color: #83C5E9;

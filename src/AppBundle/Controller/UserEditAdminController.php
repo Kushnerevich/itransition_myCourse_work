@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\DBManager\UserDBManager;
+use AppBundle\Entity\User;
 
 class UserEditAdminController extends Controller
 {
@@ -22,10 +23,18 @@ class UserEditAdminController extends Controller
      */
     public function adminAction(UserDBManager $manager)
     {
-        $users=$manager->getAllUsers();
-        return $this->render('Admin/userAdmin.html.twig',[
-            'users'=>$users
-            ]
-            );
+        $em = $this->getDoctrine()->getManager();
+        $users = $em->getRepository(User::class)->findAll();
+        return $this->render('Admin/userAdmin.html.twig',array(
+            'users' => $users
+            ));
     }
+
+    /*public function deleteAction()
+    {
+        !!!
+        return $this->render('Admin/userAdmin.html.twig',array(
+            'users' => $users
+            ));
+    }*/
 }

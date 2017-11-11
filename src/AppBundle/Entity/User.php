@@ -119,6 +119,11 @@ class User implements UserInterface, \Serializable
         $this->role=$role;
     }
 
+    public function getRole()
+    {
+        return $this->role;
+    }
+
     public function getRoles()
     {
         return [$this->role];
@@ -157,8 +162,7 @@ class User implements UserInterface, \Serializable
             $this->email,
             $this->password,
             $this->isActive,
-            // see section on salt below
-            // $this->salt,
+
         ));
     }
 
@@ -171,6 +175,7 @@ class User implements UserInterface, \Serializable
             $this->email,
             $this->password,
             $this->isActive,
+
             // see section on salt below
             // $this->salt
             ) = unserialize($serialized);

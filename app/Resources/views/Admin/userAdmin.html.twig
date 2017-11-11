@@ -6,10 +6,11 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3.jquery.min.js"></script>
     <script>
         $(document).ready (function () {
-            $("#mainPage").bind("click",function () {
+            $("#DeleteUser").bind("click",function () {
                 $.ajax ({
-
-                })
+                    url:"UserEditAdminController.php",
+                    type:"Post"
+            })
             })
         })
     </script>
@@ -23,7 +24,27 @@
     <li id ="quizPage"><a href="{{ path('admin/quizedit') }}">Quiz controller</a></li>
 </ul>
 <div>
-    {{ 'users' }}
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.role }}</td>
+                <td><button class="DeleteUser" type="submit">Delete</button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </div>
 </body>
 </html>
