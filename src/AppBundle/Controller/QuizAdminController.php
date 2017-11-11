@@ -13,7 +13,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Quiz;
+use AppBundle\DBManager\UserDBManager;
 use AppBundle\Entity\QuizQuestion;
+
 
 
 class QuizAdminController extends Controller
@@ -25,9 +27,11 @@ class QuizAdminController extends Controller
     public function adminAction(UserDBManager $manager)
     {
         $em = $this->getDoctrine()->getManager();
-        $users = $em->getRepository(User::class)->findAll();
+        $quiz = $em->getRepository(Quiz::class)->findAll();
+        $quizquestion= $em->getRepository(QuizQuestion::class)->findAll();
         return $this->render('Admin/quizAdmin.html.twig',array(
-            'users' => $users
+            'quiz' => $quiz,
+            'quizquetion' =>$quizquestion
         ));
     }
 }

@@ -32,7 +32,7 @@ class Question implements \Serializable
         $this->nameOfQuestion=$nameOfQuestion;
     }
 
-    public function getNameOfQuestions()
+    public function getname_of_question()
     {
         return $this->nameOfQuestion;
     }

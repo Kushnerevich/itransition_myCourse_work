@@ -22,5 +22,33 @@
     <li id ="questionPage"><a href="{{ path('admin/questionedit') }}">Question controller</a></li>
     <li id ="quizPage"><a href="{{ path('admin/quizedit') }}">Quiz controller</a></li>
 </ul>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th class="RedWord">Quiz</th>
+            <th>1st question</th>
+            <th>2st question</th>
+            <th>3st question</th>
+            <th>4st question</th>
+            <th>5st question</th>
+            <th>6st question</th>
+            <th>7st question</th>
+            <th>8st question</th>
+            <th>10st question</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for quizs in quiz %}
+            <tr>
+                <td>{{ quizs.id }}</td>
+                <td>{{ quizs.name_of_quiz }}</td>
+                <td><button class="DeleteUser" type="submit">Delete</button></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
 </body>
 </html>

@@ -49,7 +49,7 @@ class QuizQuestion implements \Serializable
         $this->idQuestion=$idQuestion;
     }
 
-    public function getIdQuestion()
+    public function getQuestion_id()
     {
         return $this->idQuestion;
     }

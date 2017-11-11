@@ -27,7 +27,8 @@ class Answer
     private $right;
 
     /**
-     * @ORM\OneToOne(targetEntity="Question", inversedBy="Answer")
+     *
+     * @ORM\ManyToOne(targetEntity="Question",inversedBy="QuizQuestions")
      * @ORM\JoinColumn(name="Question_id", referencedColumnName="id")
      */
     private $idQuestion;
@@ -62,7 +63,7 @@ class Answer
         $this->idQuestion=$idQuestion;
     }
 
-    public function getIdQuestion()
+    public function getQuestion_id():integer
     {
         return $this->idQuestion;
     }

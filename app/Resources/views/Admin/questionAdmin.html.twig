@@ -40,7 +40,7 @@
             <tr>
                 <td>{{ question.name_of_question }}</td>
             {% for answer in answers %}
-                {% if answer.Question_id == question.id %}
+                {% if question.id == answer.Question_id %}
                 <td>{{ answer.name_of_answer }}</td>
                 <td>{{ answer.right }}</td>
                 {% endif %}
