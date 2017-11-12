@@ -18,6 +18,17 @@
                 })
             })
         });
+         add = document.getElementById('Add');
+
+        add.onclick = function (){
+             input = document.querySelectorAll('input');
+             forGet = {};
+            for ( i=0; i<input.length; i++) {
+                 z = input[i].name;
+                forGet[z] = input[i].value;
+            }
+            console.log(forGet)
+        };
         $(document).ready (function () {
             $("#Add").bind("click", function (event) {
                 const question = event.target.dataset.index;

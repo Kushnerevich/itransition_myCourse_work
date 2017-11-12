@@ -14,6 +14,10 @@ button{
     width: 100%;
 }
 
+.Quiz{
+    width: 90%;
+}
+
 #mainPage,#quizPage,#userPage{
     width: 23%;
 }
