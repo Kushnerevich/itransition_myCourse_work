@@ -18,7 +18,7 @@ class Question implements \Serializable
     private $Id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=false)
+     * @ORM\Column(type="string", length=60, unique=false)
      */
     private $nameOfQuestion;
 

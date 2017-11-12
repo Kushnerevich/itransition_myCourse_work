@@ -3,12 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3.jquery.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     <script>
         $(document).ready (function () {
-            $("#mainPage").bind("click",function () {
-                $.ajax ({
+            $(".quetions").bind("click", function (event) {
+                const id = event.target.dataset.index;
+                $.ajax({
+                    url: "questionedit/del",
+                    type: "GET",
+                    data: ({id: id}),
+                    success: function () {
+                        $(`[data-index~=${id}]`).parent().parent().remove()
+                    }
+                })
+            })
+        });
+        $(document).ready (function () {
+            $("#Add").bind("click", function (event) {
+                const question = event.target.dataset.index;
+                $.ajax({
+                    url: "questionedit/Add",
+                    type: "GET",
+                    data: ({Question:
 
+                    }),
+                    success: function () {
+                        $(`[data-index~=${id}]`).parent().parent().remove()
+                    }
                 })
             })
         })
@@ -37,30 +58,28 @@
 
         <tbody>
         <tr>
-            <td><input type="text" name="QuestionName"></td>
-            <td><input type="text" name="1stAnswer" ></td>
-            <td><input type="text" name="2stAnswer" ></td>
-            <td><input type="text" name="3stAnswer" ></td>
-            <td><input type="text" name="4stAnswer"></td>
-            <td><button type="submit">Add question</button></td>
+            <td><input type="text" placeholder="Question" required name="QuestionName"></td>
+            <td><input type="text" placeholder="Answer" required name="1stAnswer" ></td>
+            <td><input type="text" placeholder="Answer" required name="2stAnswer" ></td>
+            <td><input type="text" placeholder="Answer" required name="3stAnswer" ></td>
+            <td><input type="text" placeholder="Answer" required name="4stAnswer"></td>
+            <td><button id="Add" type="submit">Add question</button></td>
         </tr>
-        {% for question in questions %}
+        </tbody>
 
+        {% for question in questions %}
+        <tbody class="quetions">
             <tr>
                 <td>{{ question.name_of_question }}</td>
                 {% for answer in answers %}
-
-                     {% if answer.Question_id.id==question.id %}
+                    {% if answer.Question_id.id==question.id %}
                         <td>{{ answer.name_of_answer }}{{ answer.right }}</td>
-                     {%endif%}
+                    {%endif%}
                 {% endfor %}
-                <td><button class="DeleteUser" type="submit">Delete</button></td>
+                <td><button data-index={{ question.id }} type="button">Delete</button></td>
             </tr>
-
         {% endfor %}
-
         </tbody>
     </table>
-
 </div>
 </html>

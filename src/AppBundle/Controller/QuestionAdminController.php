@@ -12,7 +12,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\Entity\Question;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use AppBundle\Entity\Answer;
+use Symfony\Component\HttpFoundation\Response;
 
 class QuestionAdminController extends Controller
 {
@@ -29,6 +31,20 @@ class QuestionAdminController extends Controller
             'questions' => $questions,
             'answers'=>$answers
         ));
+    }
 
+    /**
+     * @Route("/admin/questionedit/del", name="/admin/questionedit/del")
+     * @Method("GET")
+     */
+    public function deleteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $question = $em->getRepository(Question::class)->findOneBy(
+            array('Id' =>$_GET['id'])
+        );
+        $em->remove($question);
+        $em->flush();
+        return new Response("HEllo");
     }
 }

@@ -19,13 +19,13 @@ class QuizQuestion implements \Serializable
 
     /**
      * @ORM\OneToOne(targetEntity="Quiz", inversedBy="QuizQuestions")
-     * @ORM\JoinColumn(name="id_Quiz", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_Quiz", referencedColumnName="id",onDelete="cascade")
      */
     private $idQuiz;
 
     /**
      * @ORM\OneToOne(targetEntity="Question", inversedBy="QuizQuestions")
-     * @ORM\JoinColumn(name="id_Question", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_Question", referencedColumnName="id",onDelete="cascade")
      */
     private $idQuestion;
 
