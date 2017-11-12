@@ -26,7 +26,7 @@
     <table>
         <thead>
         <tr>
-            <th>Id</th>
+
             <th class="RedWord">Quiz</th>
             <th>1st question</th>
             <th>2st question</th>
@@ -36,17 +36,102 @@
             <th>6st question</th>
             <th>7st question</th>
             <th>8st question</th>
+            <th>9st question</th>
             <th>10st question</th>
         </tr>
         </thead>
         <tbody>
         {% for quizs in quiz %}
+        <tr>
+           <td>{{ quizs.name_of_quiz }}</td>
+            {% for quizquetions in quizquetion %}
+                {% if quizquetion.id_Quiz==quizs.id %}
+                    {% for questions in question %}
+                      {% if quizquestion.id_Question==questions.id %}
+                        <td>{{ quizquetion.name_of_question }}</td>
+                      {% endif %}
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        </tr>
+        </tbody>
+        <tbody>
+
             <tr>
-                <td>{{ quizs.id }}</td>
-                <td>{{ quizs.name_of_quiz }}</td>
+                <td><input type="text"></td>
+                <td>
+                    <input class="Quiz" list="1">
+                    <datalist id="1">
+                            {% for questions in question %}
+                            <option value="{{ questions.name_of_question }}"></option>
+                            {% endfor %}
+                    </datalist>
+                </td>
+                <td>
+                    <input class="Quiz" list="2">
+                    <datalist id="2">
+                        {% for questions in question %}
+                            <option value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}</datalist></td>
+                <td>
+                    <input class="Quiz" list="3">
+                    <datalist id="3">
+                        {% for questions in question %}
+                            <option value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td>
+                    <input class="Quiz" list="4">
+                    <datalist id="4">
+                        {% for questions in question %}
+                            <option class="character4" value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td>
+                    <input class="Quiz" list="5">
+                    <datalist id="5">
+                        {% for questions in question %}
+                            <option class="character5" value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td>
+                    <input class="Quiz" list="6">
+                    <datalist id="6">
+                        {% for questions in question %}
+                            <option class="character6" value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td>
+                    <input class="Quiz" list="7">
+                    <datalist id="7">
+                        {% for questions in question %}
+                            <option class="character7" value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td>
+                    <input class="Quiz" list="8">
+                    <datalist id="8">
+                        {% for questions in question %}
+                            <option value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td>
+                    <input class="Quiz" list="9">
+                    <datalist id="9">
+                        {% for questions in question %}
+                            <option value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}
+                    </datalist></td>
+                <td>
+                    <input class="Quiz" list="10">
+                    <datalist id="10">
+                        {% for questions in question %}
+                            <option value="{{ questions.name_of_question }}"></option>
+                        {% endfor %}
+                    </datalist></td>
                 <td><button class="DeleteUser" type="submit">Delete</button></td>
             </tr>
-        {% endfor %}
         </tbody>
     </table>
 </div>
