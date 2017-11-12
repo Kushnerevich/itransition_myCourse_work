@@ -26,7 +26,7 @@ class UserToken
 
     /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="userToken")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id",onDelete="cascade")
      */
     private $user;
 

@@ -18,19 +18,19 @@ class UserAnswer
 
     /**
      * @ORM\OneToOne(targetEntity="User", inversedBy="UserAnswer")
-     * @ORM\JoinColumn(name="id_User", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_User", referencedColumnName="id", onDelete="cascade")
      */
     private $idUser;
 
     /**
      * @ORM\OneToOne(targetEntity="Question", inversedBy="UserAnswer")
-     * @ORM\JoinColumn(name="id_Question", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_Question", referencedColumnName="id", onDelete="cascade")
      */
     private $idQuestion;
 
     /**
      * @ORM\OneToOne(targetEntity="Answer", inversedBy="UserAnswer")
-     * @ORM\JoinColumn(name="id_Answer", referencedColumnName="id")
+     * @ORM\JoinColumn(name="id_Answer", referencedColumnName="id", onDelete="cascade")
      */
     private $idAnswer;
 

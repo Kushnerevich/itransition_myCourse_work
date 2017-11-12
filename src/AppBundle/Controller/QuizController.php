@@ -22,6 +22,9 @@ class QuizController extends Controller
      * @Security("has_role('ROLE_USER')")
      */
     public function quizAction(){
-        return new Response('hello');
+
+
+        return new Response("Hello");
+
     }
 }

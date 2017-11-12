@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js">
-            $(document).ready (function () {
-            $("#DeleteUser").bind("click",function () {
-                $.ajax ({
-                    type: "GET",
-                    url:"app_dev.php/quiz"
-            })
-            })
-        })
-    </script>
+
     <link rel="stylesheet" href="{{ asset("Styles/AdminPageStyle.css") }}">
 </head>
 <body>
@@ -32,18 +23,35 @@
             <th>Role</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="users">
         {% for user in users %}
-            <tr>
+            <tr id= "{{ user.id }}">
                 <td>{{ user.id }}</td>
                 <td>{{ user.username }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.role }}</td>
-                <td><button id="DeleteUser" type="submit">Delete</button></td>
+                <td><button data-index={{ user.id }} type="submit">Delete</button></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script>
+      $(document).ready (function () {
+          $("#users").bind("click", function (event) {
+              const id = event.target.dataset.index;
+              $.ajax({
+                  url: "useredit/del",
+                  type: "GET",
+                  data: ({id: id}),
+                  success: function () {
+                      $(`[data-index~=${id}]`).parent().parent().remove()
+                  }
+              })
+              
+          })
+      })
+  </script>
 </body>
 </html>

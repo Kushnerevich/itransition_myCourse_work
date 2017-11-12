@@ -8,11 +8,15 @@
 
 namespace AppBundle\Controller;
 
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use AppBundle\DBManager\UserDBManager;
 use AppBundle\Entity\User;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserEditAdminController extends Controller
 {
@@ -30,11 +34,18 @@ class UserEditAdminController extends Controller
             ));
     }
 
-    /*public function deleteAction()
+    /**
+     * @Route("/admin/useredit/del", name="/admin/useredit/del")
+     * @Method("GET")
+     */
+    public function deleteAction()
     {
-        !!!
-        return $this->render('Admin/userAdmin.html.twig',array(
-            'users' => $users
-            ));
-    }*/
+        $em = $this->getDoctrine()->getManager();
+        $user = $em->getRepository(User::class)->findOneBy(
+            array('id' =>$_GET['id'])
+        );
+        $em->remove($user);
+        $em->flush();
+        return new Response("HEllo");
+    }
 }
