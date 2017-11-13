@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
-
     <link rel="stylesheet" href="{{ asset("Styles/AdminPageStyle.css") }}">
 </head>
 <body>
@@ -17,7 +16,6 @@
     <table>
         <thead>
         <tr>
-
             <th class="RedWord">Quiz</th>
             <th>1st question</th>
             <th>2st question</th>
@@ -31,7 +29,6 @@
             <th>10st question</th>
         </tr>
         </thead>
-
         </tbody>
         <tbody>
         <tr>
@@ -115,20 +112,20 @@
         <tbody>
         {% for quizs in quiz %}
         <tr>
-           <td>{{ quizs.name_of_quiz }}</td>
+            <td>{{ quizs.name_of_quiz }}</td>
 
             {% for quizquetions in quizquetion %}
                 {% if quizquetions.id_Quiz.id==quizs.id %}
                     {% for questions in question %}
-                      {% if quizquetions.id_Question.id==questions.id %}
-                        <td>{{ questions.name_of_question }} </td>
-                      {% endif %}
+                        {% if quizquetions.id_Question.id==questions.id %}
+                            <td>{{ questions.name_of_question }} </td>
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
 
             {% endfor %}
             <td><button class="DeleteQuiz" data-index={{ quizs.id }} type="button">Delete</button></td>
-        {% endfor %}
+            {% endfor %}
         </tr>
         </tbody>
     </table>
@@ -148,39 +145,35 @@
             })
         })
     });
-
     $(document).ready (function () {
-            $(".AddQuiz").bind("click", function (event) {
-                input = document.getElementsByClassName('Quiz');
-                classNameOfQuiz= document.getElementsByClassName('NameOfQuiz');
-                nameOfQuiz= classNameOfQuiz[0].value;
-                forGet = {};
-                for (i = 0; i < input.length; i++) {
-                    z = input[i].name;
-                    forGet[z] = input[i].value;
-                }
-
-                $.ajax({
-                    url: "quizedit/add",
-                    type: "GET",
-                    data: ({
-                        quiz:nameOfQuiz,
-                        question1: forGet['1stquestion'],
-                        question2: forGet['2stquestion'],
-                        question3: forGet['3stquestion'],
-                        question4: forGet['4stquestion'],
-                        question5: forGet['5stquestion'],
-                        question6: forGet['6stquestion'],
-                        question7: forGet['7stquestion'],
-                        question8: forGet['8stquestion'],
-                        question9: forGet['9stquestion'],
-                        question10: forGet['10stquestion']
-                    }),
-                })
-           })
+        $(".AddQuiz").bind("click", function (event) {
+            input = document.getElementsByClassName('Quiz');
+            classNameOfQuiz= document.getElementsByClassName('NameOfQuiz');
+            nameOfQuiz= classNameOfQuiz[0].value;
+            forGet = {};
+            for (i = 0; i < input.length; i++) {
+                z = input[i].name;
+                forGet[z] = input[i].value;
+            }
+            $.ajax({
+                url: "quizedit/add",
+                type: "GET",
+                data: ({
+                    quiz:nameOfQuiz,
+                    question1: forGet['1stquestion'],
+                    question2: forGet['2stquestion'],
+                    question3: forGet['3stquestion'],
+                    question4: forGet['4stquestion'],
+                    question5: forGet['5stquestion'],
+                    question6: forGet['6stquestion'],
+                    question7: forGet['7stquestion'],
+                    question8: forGet['8stquestion'],
+                    question9: forGet['9stquestion'],
+                    question10: forGet['10stquestion']
+                }),
+            })
+        })
     })
-
 </script>
-
 </body>
 </html>

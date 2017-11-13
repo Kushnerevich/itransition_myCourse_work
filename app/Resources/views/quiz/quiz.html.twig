@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ asset("Styles/AdminPageStyle.css") }}">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<ul id="menu-2">
+    <li id ="mainPage"><a href="{{ path('admin') }}">Start game</a></li>
+    <li id = "userPage"><a href="{{ path('admin/useredit') }}">Documentation</a></li>
+    <li id ="questionPage"><a href="{{ path('admin/questionedit') }}">Statistics</a></li>
+    <li id ="quizPage"><a href="{{ path('admin/quizedit') }}">Exit</a></li>
+</ul>
+<h1>Choose a quiz</h1>
+    <input name="AllQuiz" class="Quiz" list="1">
+    <datalist id="1">
+        {% for quizs in quiz %}
+            <option value="{{ quizs.name_of_quiz }}"></option>
+        {% endfor %}
+    </datalist>
+<p> </p>
+<form method="post" action="/">
+<input type="submit" value="START GAME"></input>
+</form>
+</body>
+</html>
