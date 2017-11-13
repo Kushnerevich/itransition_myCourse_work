@@ -20,8 +20,21 @@
         });
 
         $(document).ready (function (){
-            $(".trueAnswer").bind("click",function () {
+            $(".Edit").bind("click",function (event) {
+                const MyQuestion = event.target.dataset.index;
+                trueAnswer=document.getElementsByClassName(MyQuestion);
+                trueAns=0;
 
+                for (i=0; i<trueAnswer.length;i++) {
+                    if (trueAnswer[i].checked) {
+                        trueAns=trueAnswer[i].value;
+                    }
+                }
+                $.ajax({
+                    url: "questionedit/edittrue",
+                    type: "GET",
+                    data: ({idAnswer: trueAns, idQuestion:MyQuestion}),
+                })
             })
         });
 
@@ -29,6 +42,7 @@
         $(document).ready (function (){
              $("#Add").bind("click",function () {
                  input = document.getElementsByClassName('inputQuestion');
+
                  tryAnswer=document.getElementsByClassName('radioButton');
                  forGet = {};
                  for (i = 0; i < input.length; i++) {
@@ -54,7 +68,7 @@
                          answer4:forGet['4stAnswer'],
                          trueAnswer:trueAns
                      }),
-                     success:
+                     //success:
                  })
              })
          });
@@ -101,13 +115,13 @@
                 {% for answer in answers %}
                     {% if answer.Question_id.id==question.id %}
                         {% if answer.right_answer==1 %}
-                        <td>{{ answer.name_of_answer }}<input type="radio" class="trueAnswer" checked name="{{ question.id }}" id="{{ answer.Id }}"></td>
+                        <td>{{ answer.name_of_answer }}<input type="radio" class={{ question.id  }} checked value="{{ answer.id }}" name="{{ question.id }}" id="trueAnswer"></td>
                         {% else%}
-                            <td>{{ answer.name_of_answer }}<input data-index={{ answer.id }} type="radio" class="trueAnswer" name="{{ question.id }}" id="{{ answer.Id }}"></td>
+                            <td>{{ answer.name_of_answer }}<input type="radio" class={{ question.id  }} value="{{ answer.id }}" name="{{ question.id }}" id="trueAnswer"></td>
                     {%endif%}
                 {% endif %}
                 {% endfor %}
-                <td><button data-index={{ question.id }} class="quetions" type="button">Delete</button></td>
+                <td><button data-index={{ question.id }} class="Edit" type="button">Edit</button><button data-index={{ question.id }} class="quetions" type="button">Delete</button></td>
             </tr>
         {% endfor %}
         </thead>

@@ -118,4 +118,33 @@ class QuestionAdminController extends Controller
 
         return new Response("Hello");
     }
+
+    /**
+     * @Route("/admin/questionedit/edittrue", name="/admin/questionedit/edittrue")
+     * @Method("GET")
+     */
+    public function editAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $question=$em->getRepository(Question::class)->findOneBy(
+            array('Id'=>$_GET['idQuestion'])
+        );
+
+        $oldTrueAnswer=$em->getRepository(Answer::class)->findOneBy(
+            array('idQuestion'=>$question,'rightAnswer'=>true)
+        );
+
+        $oldTrueAnswer->setRight(false);
+        $em->persist($oldTrueAnswer);
+
+        $answer = $em->getRepository(Answer::class)->findOneBy(
+            array('id' =>$_GET['idAnswer'])
+        );
+        $answer->setRight(true);
+        $em->persist($answer);
+
+        $em->flush();
+        return new Response("HEllo");
+    }
 }

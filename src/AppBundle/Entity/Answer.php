@@ -44,7 +44,7 @@ class Answer
         $this->nameOfAnsw=$nameOfAnswer;
     }
 
-    public function getname_of_answer   ()
+    public function getname_of_answer()
     {
         return $this->nameOfAnsw;
     }
