@@ -29,6 +29,11 @@ button{
     color: darkmagenta;
 }
 
+.inputQuestion{
+    width: 70%;
+}
+
+
 th {
     font-size: 18px;
     padding: 10px;

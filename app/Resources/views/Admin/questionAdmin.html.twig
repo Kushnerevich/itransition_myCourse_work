@@ -18,32 +18,48 @@
                 })
             })
         });
-         add = document.getElementById('Add');
 
-        add.onclick = function (){
-             input = document.querySelectorAll('input');
-             forGet = {};
-            for ( i=0; i<input.length; i++) {
-                 z = input[i].name;
-                forGet[z] = input[i].value;
-            }
-            console.log(forGet)
-        };
-        $(document).ready (function () {
-            $("#Add").bind("click", function (event) {
-                const question = event.target.dataset.index;
-                $.ajax({
-                    url: "questionedit/Add",
-                    type: "GET",
-                    data: ({Question:
+        $(document).ready (function (){
+            $(".trueAnswer").bind("click",function () {
 
-                    }),
-                    success: function () {
-                        $(`[data-index~=${id}]`).parent().parent().remove()
-                    }
-                })
             })
-        })
+        });
+
+
+        $(document).ready (function (){
+             $("#Add").bind("click",function () {
+                 input = document.getElementsByClassName('inputQuestion');
+                 tryAnswer=document.getElementsByClassName('radioButton');
+                 forGet = {};
+                 for (i = 0; i < input.length; i++) {
+                     z = input[i].name;
+                     forGet[z] = input[i].value;
+                 }
+
+                 trueAns=0;
+
+                 for (i=0; i<tryAnswer.length;i++) {
+                     if (tryAnswer[i].checked) {
+                         trueAns=tryAnswer[i].value;
+                     }
+                 }
+                 $.ajax({
+                     url: "questionedit/add",
+                     type: "GET",
+                     data: ({
+                         questions: forGet['QuestionName'],
+                         answer1:forGet['1stAnswer'],
+                         answer2:forGet['2stAnswer'],
+                         answer3:forGet['3stAnswer'],
+                         answer4:forGet['4stAnswer'],
+                         trueAnswer:trueAns
+                     }),
+                     success:
+                 })
+             })
+         });
+
+
     </script>
     <link rel="stylesheet" href="{{ asset("Styles/AdminPageStyle.css") }}">
 </head>
@@ -69,28 +85,32 @@
 
         <tbody>
         <tr>
-            <td><input type="text" placeholder="Question" required name="QuestionName"></td>
-            <td><input type="text" placeholder="Answer" required name="1stAnswer" ></td>
-            <td><input type="text" placeholder="Answer" required name="2stAnswer" ></td>
-            <td><input type="text" placeholder="Answer" required name="3stAnswer" ></td>
-            <td><input type="text" placeholder="Answer" required name="4stAnswer"></td>
+            <td><input type="text" class="inputQuestion" placeholder="Question" required name="QuestionName"></td>
+            <td><input type="text" class="inputQuestion" placeholder="Answer" required name="1stAnswer" ><input type="radio" name="1" value="1" class="radioButton"> </td>
+            <td><input type="text" class="inputQuestion" placeholder="Answer" required name="2stAnswer" ><input type="radio" name="1" value="2" class="radioButton"></td>
+            <td><input type="text" class="inputQuestion" placeholder="Answer" required name="3stAnswer" ><input type="radio" name="1" value="3" class="radioButton"></td>
+            <td><input type="text" class="inputQuestion" placeholder="Answer" required name="4stAnswer"><input type="radio" name="1"  value="4" class="radioButton"></td>
             <td><button id="Add" type="submit">Add question</button></td>
         </tr>
         </tbody>
 
         {% for question in questions %}
-        <tbody class="quetions">
+        <thead>
             <tr>
                 <td>{{ question.name_of_question }}</td>
                 {% for answer in answers %}
                     {% if answer.Question_id.id==question.id %}
-                        <td>{{ answer.name_of_answer }}{{ answer.right }}</td>
+                        {% if answer.right_answer==1 %}
+                        <td>{{ answer.name_of_answer }}<input type="radio" class="trueAnswer" checked name="{{ question.id }}" id="{{ answer.Id }}"></td>
+                        {% else%}
+                            <td>{{ answer.name_of_answer }}<input data-index={{ answer.id }} type="radio" class="trueAnswer" name="{{ question.id }}" id="{{ answer.Id }}"></td>
                     {%endif%}
+                {% endif %}
                 {% endfor %}
-                <td><button data-index={{ question.id }} type="button">Delete</button></td>
+                <td><button data-index={{ question.id }} class="quetions" type="button">Delete</button></td>
             </tr>
         {% endfor %}
-        </tbody>
+        </thead>
     </table>
 </div>
 </html>

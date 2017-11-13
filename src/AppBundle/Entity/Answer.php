@@ -18,14 +18,14 @@ class Answer
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=false)
+     * @ORM\Column(type="string", length=50)
      */
-    private $nameOfAnswer;
+    private $nameOfAnsw;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $right;
+    private $rightAnswer;
 
     /**
      *
@@ -39,27 +39,27 @@ class Answer
         return $this->id;
     }
 
-    public function setNameOfAnswer(string $nameOfAnswer)
+    public function setnameOfAnsw(string $nameOfAnswer)
     {
-        $this->nameOfAnswer=$nameOfAnswer;
+        $this->nameOfAnsw=$nameOfAnswer;
     }
 
-    public function getname_of_answer()
+    public function getname_of_answer   ()
     {
-        return $this->nameOfAnswer;
+        return $this->nameOfAnsw;
     }
 
-    public function setRight(string $right)
+    public function setRight(bool $right)
     {
-        $this->right=$right;
+        $this->rightAnswer=$right;
     }
 
-    public function getRight()
+    public function getright_answer()
     {
-        return $this->right;
+        return $this->rightAnswer;
     }
 
-    public function setIdQuestion(string $idQuestion)
+    public function setIdQuestion( $idQuestion)
     {
         $this->idQuestion=$idQuestion;
     }
