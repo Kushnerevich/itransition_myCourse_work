@@ -20,21 +20,21 @@ class Question implements \Serializable
     /**
      * @ORM\Column(type="string", length=60, unique=false)
      */
-    private $nameOfQuestion;
+    private $name_of_question;
 
-    public function getId()
+    public function getId():int
     {
         return $this->Id;
     }
 
     public function setNameOfQuestions(string $nameOfQuestion)
     {
-        $this->nameOfQuestion=$nameOfQuestion;
+        $this->name_of_question=$nameOfQuestion;
     }
 
     public function getname_of_question()
     {
-        return $this->nameOfQuestion;
+        return $this->name_of_question;
     }
 
     /** @see \Serializable::serialize() */
@@ -42,7 +42,7 @@ class Question implements \Serializable
     {
         return serialize(array(
             $this->Id,
-            $this->nameOfQuestion,
+            $this->name_of_question,
         ));
     }
 
@@ -51,7 +51,7 @@ class Question implements \Serializable
     {
         list (
             $this->Id,
-            $this->nameOfQuestion,
+            $this->name_of_question,
             ) = unserialize($serialized);
     }
 }
