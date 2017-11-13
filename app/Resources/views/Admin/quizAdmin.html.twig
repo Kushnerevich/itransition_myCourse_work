@@ -3,16 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Page</title>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3.jquery.min.js"></script>
-    <script>
-        $(document).ready (function () {
-            $("#mainPage").bind("click",function () {
-                $.ajax ({
 
-                })
-            })
-        })
-    </script>
     <link rel="stylesheet" href="{{ asset("Styles/AdminPageStyle.css") }}">
 </head>
 <body>
@@ -40,105 +31,156 @@
             <th>10st question</th>
         </tr>
         </thead>
+
+        </tbody>
+        <tbody>
+        <tr>
+            <td><input class="NameOfQuiz" type="text"></td>
+            <td>
+                <input name="1stquestion" class="Quiz" list="1">
+                <datalist id="1">
+                    {% for questions in question %}
+                        <option value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist>
+            </td>
+            <td>
+                <input name="2stquestion" class="Quiz" list="2">
+                <datalist id="2">
+                    {% for questions in question %}
+                        <option value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}</datalist></td>
+            <td>
+                <input name="3stquestion" class="Quiz" list="3">
+                <datalist id="3">
+                    {% for questions in question %}
+                        <option value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist></td>
+            <td>
+                <input name="4stquestion" class="Quiz" list="4">
+                <datalist id="4">
+                    {% for questions in question %}
+                        <option class="character4" value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist></td>
+            <td>
+                <input name="5stquestion" class="Quiz" list="5">
+                <datalist id="5">
+                    {% for questions in question %}
+                        <option class="character5" value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist></td>
+            <td>
+                <input name="6stquestion" class="Quiz" list="6">
+                <datalist id="6">
+                    {% for questions in question %}
+                        <option class="character6" value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist></td>
+            <td>
+                <input name="7stquestion" class="Quiz" list="7">
+                <datalist id="7">
+                    {% for questions in question %}
+                        <option class="character7" value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist></td>
+            <td>
+                <input name="8stquestion" class="Quiz" list="8">
+                <datalist id="8">
+                    {% for questions in question %}
+                        <option value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist></td>
+            <td>
+                <input name="9stquestion" class="Quiz" list="9">
+                <datalist id="9">
+                    {% for questions in question %}
+                        <option value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist></td>
+            <td>
+                <input name="10stquestion" class="Quiz" list="10">
+                <datalist id="10">
+                    {% for questions in question %}
+                        <option value="{{ questions.name_of_question }}"></option>
+                    {% endfor %}
+                </datalist></td>
+            <td>
+                <button class="AddQuiz" type="button">Add Quiz</button>
+            </td>
+        </tr>
+        </tbody>
+
         <tbody>
         {% for quizs in quiz %}
         <tr>
            <td>{{ quizs.name_of_quiz }}</td>
 
             {% for quizquetions in quizquetion %}
-                {% if quizquetion.id_Quiz==quizs.id %}
+                {% if quizquetions.id_Quiz.id==quizs.id %}
                     {% for questions in question %}
-                      {% if quizquestion.id_Question==questions.id %}
-                        <td>{{ quizquetion.name_of_question }} </td>
+                      {% if quizquetions.id_Question.id==questions.id %}
+                        <td>{{ questions.name_of_question }} </td>
                       {% endif %}
                     {% endfor %}
                 {% endif %}
 
             {% endfor %}
-            <td><button class="DeleteUser" type="submit">Delete</button></td>
+            <td><button class="DeleteQuiz" data-index={{ quizs.id }} type="button">Delete</button></td>
         {% endfor %}
-
         </tr>
-
-        </tbody>
-        <tbody>
-
-            <tr>
-                <td><input type="text"></td>
-                <td>
-                    <input class="Quiz" list="1">
-                    <datalist id="1">
-                            {% for questions in question %}
-                            <option value="{{ questions.name_of_question }}"></option>
-                            {% endfor %}
-                    </datalist>
-                </td>
-                <td>
-                    <input class="Quiz" list="2">
-                    <datalist id="2">
-                        {% for questions in question %}
-                            <option value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}</datalist></td>
-                <td>
-                    <input class="Quiz" list="3">
-                    <datalist id="3">
-                        {% for questions in question %}
-                            <option value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}
-                    </datalist></td>
-                <td>
-                    <input class="Quiz" list="4">
-                    <datalist id="4">
-                        {% for questions in question %}
-                            <option class="character4" value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}
-                    </datalist></td>
-                <td>
-                    <input class="Quiz" list="5">
-                    <datalist id="5">
-                        {% for questions in question %}
-                            <option class="character5" value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}
-                    </datalist></td>
-                <td>
-                    <input class="Quiz" list="6">
-                    <datalist id="6">
-                        {% for questions in question %}
-                            <option class="character6" value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}
-                    </datalist></td>
-                <td>
-                    <input class="Quiz" list="7">
-                    <datalist id="7">
-                        {% for questions in question %}
-                            <option class="character7" value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}
-                    </datalist></td>
-                <td>
-                    <input class="Quiz" list="8">
-                    <datalist id="8">
-                        {% for questions in question %}
-                            <option value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}
-                    </datalist></td>
-                <td>
-                    <input class="Quiz" list="9">
-                    <datalist id="9">
-                        {% for questions in question %}
-                            <option value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}
-                    </datalist></td>
-                <td>
-                    <input class="Quiz" list="10">
-                    <datalist id="10">
-                        {% for questions in question %}
-                            <option value="{{ questions.name_of_question }}"></option>
-                        {% endfor %}
-                    </datalist></td>
-
-            </tr>
         </tbody>
     </table>
 </div>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script>
+    $(document).ready (function () {
+        $(".DeleteQuiz").bind("click", function (event) {
+            const quizId = event.target.dataset.index;
+            $.ajax({
+                url: "quizedit/del",
+                type: "GET",
+                data: ({id: quizId}),
+                success: function () {
+                    $(`[data-index~=${id}]`).parent().parent().remove()
+                }
+            })
+        })
+    });
+
+    $(document).ready (function () {
+            $(".AddQuiz").bind("click", function (event) {
+                input = document.getElementsByClassName('Quiz');
+                classNameOfQuiz= document.getElementsByClassName('NameOfQuiz');
+                nameOfQuiz= classNameOfQuiz[0].value;
+                forGet = {};
+                for (i = 0; i < input.length; i++) {
+                    z = input[i].name;
+                    forGet[z] = input[i].value;
+                }
+
+                $.ajax({
+                    url: "quizedit/add",
+                    type: "GET",
+                    data: ({
+                        quiz:nameOfQuiz,
+                        question1: forGet['1stquestion'],
+                        question2: forGet['2stquestion'],
+                        question3: forGet['3stquestion'],
+                        question4: forGet['4stquestion'],
+                        question5: forGet['5stquestion'],
+                        question6: forGet['6stquestion'],
+                        question7: forGet['7stquestion'],
+                        question8: forGet['8stquestion'],
+                        question9: forGet['9stquestion'],
+                        question10: forGet['10stquestion']
+                    }),
+                })
+           })
+    })
+
+</script>
+
 </body>
 </html>

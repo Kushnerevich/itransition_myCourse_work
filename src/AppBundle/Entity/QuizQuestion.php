@@ -3,6 +3,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use AppBundle\Entity\Quiz;
+use AppBundle\Entity\Question;
 
 /**
  * @ORM\Table(name="QuizQuestions")
@@ -18,38 +20,38 @@ class QuizQuestion implements \Serializable
     private $id;
 
     /**
-     * @ORM\OneToOne(targetEntity="Quiz", inversedBy="QuizQuestions")
+     * @ORM\ManyToOne(targetEntity="Quiz", inversedBy="QuizQuestions")
      * @ORM\JoinColumn(name="id_Quiz", referencedColumnName="id",onDelete="cascade")
      */
     private $idQuiz;
 
     /**
-     * @ORM\OneToOne(targetEntity="Question", inversedBy="QuizQuestions")
+     * @ORM\ManyToOne(targetEntity="Question", inversedBy="QuizQuestions")
      * @ORM\JoinColumn(name="id_Question", referencedColumnName="id",onDelete="cascade")
      */
     private $idQuestion;
 
-    public function getId(): int
+    public function getId()
     {
         return $this->id;
     }
 
-    public function setIdQuiz(string $idQuiz)
+    public function setIdQuiz(Quiz $idQuiz)
     {
         $this->idQuiz=$idQuiz;
     }
 
-    public function getIdQuiz()
+    public function getid_Quiz()
     {
         return $this->idQuiz;
     }
 
-    public function setIdQuestion(string $idQuestion)
+    public function setIdQuestion(Question $idQuestion)
     {
         $this->idQuestion=$idQuestion;
     }
 
-    public function getQuestion_id()
+    public function getid_Question()
     {
         return $this->idQuestion;
     }
